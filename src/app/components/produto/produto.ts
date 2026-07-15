@@ -1,21 +1,14 @@
-import { Component } from '@angular/core';
-import { UpperCasePipe } from '@angular/common';
+import { Component,input,output,EventEmitter, Input,} from '@angular/core';
+import { UpperCasePipe, CurrencyPipe } from '@angular/common';
+import { PrecoFormatadoPipe } from '../../pipes/preco-formatado-pipe';
 
 @Component({
   selector: 'app-produto',
-  imports: [UpperCasePipe],
+  imports: [UpperCasePipe, PrecoFormatadoPipe],
   templateUrl: './produto.html',
   styleUrl: './produto.css',
-})
-// adicionando a classe produto com as propriedades produto, 
+})// adicionando a classe produto com as propriedades produto, 
 export class Produto {
-  produto = 'notebook gamer'
-  preco = 1500.00;
-  mostrarProduto = true;
-  mostrarPreco = true;
-produtos =[
-  {nome:'Teclado', preco:'49.99'},
-  {nome:'Mouse', preco:'29.99'},
-  {nome:'Monitor',preco:'149.99'},
-]
+  @Input() nome: string ='';
+  @Input() nome: number = 0;
 }
