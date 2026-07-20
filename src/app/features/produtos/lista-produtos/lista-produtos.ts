@@ -3,9 +3,12 @@ import { Produto } from '../produto/produto';
 import { signal } from '@angular/core';
 import { computed } from '@angular/core';
 import { PrecoFormatadoPipe } from '../../../shared/pipes/preco-formatado-pipe';
+import { effect } from '@angular/core';
+import { UpperCasePipe} from '@angular/common';
+
 @Component({
   selector: 'app-lista-produtos',
-  imports: [Produto, PrecoFormatadoPipe],
+  imports: [Produto, PrecoFormatadoPipe, UpperCasePipe],
   templateUrl: './lista-produtos.html',
   styleUrl: './lista-produtos.css',
 })
@@ -21,6 +24,7 @@ export class ListaProdutos {
   //!função para exibir selecionados pelo usuario no console
   exibirProduto(nome: string){
     console.log('Produto selecionado:', nome);
+    this.produtoSelecionado.set(nome);
   }
   //!função que adicionar produto usando metodo update()
   adicionarproduto(){
@@ -37,4 +41,30 @@ export class ListaProdutos {
   total + item.preco,0
   )}
 );
+//!função que substituir a lista usando o metodo set()
+substituirproduto(){
+  this.produtos.set([
+    {nome:'teclado', preco: 50 },
+    {nome:'mouse', preco: 15 },
+    {nome:'monitor', preco: 500 },
+    {nome:'desktop', preco: 1500 },
+    {nome:'headset', preco: 30 },
+  ]);
+}
+//metodo para monitorar alterações em tempo real usando effect()
+constructor(){
+  effect(() =>{
+    console.log('lista de produtos alterados: ', this.produtos());
+  });
+  effect(() =>{
+    console.log('valor Total atualizado: ', this.valorTotal);
+  });
+  effect(() =>{
+    if (typeof document !== 'undefined'){
+      document.title = `(${this.totalprodutos()}) - Loja da Anny`;
+    }
+  });
+}
+//Metodo para criar um estado de seleção com signal string | null
+produtoSelecionado = signal <string | null>(null);
 }
