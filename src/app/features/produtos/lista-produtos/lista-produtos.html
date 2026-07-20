@@ -1,3 +1,11 @@
+<h2>
+    produto selecionado:
+    @if(produtoSelecionado()){
+        <strong style="color: rgb(243, 127, 208);">{{produtoSelecionado() | uppercase}}</strong>
+    }@else{
+        <span style="color: grey;">nenhum produto selecionado</span>
+    }
+</h2>
 @for(item of produtos(); track item){
     <app-produto 
     [nome]="item.nome"
@@ -6,5 +14,6 @@
     ></app-produto>
 }
 <p><button (click)="adicionarproduto()">Adicionar produto</button></p>
+<p><button (click)="substituirproduto()">substituir produto</button></p>
 <h2>total de produtos: {{totalprodutos()}}</h2>
 <h3>valor Total: {{valorTotal() | precoFormatado}}</h3>
