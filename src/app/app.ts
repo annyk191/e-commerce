@@ -10,5 +10,5 @@ import { UpperCasePipe } from '@angular/common';
 })
 export class App {
   protected readonly title = signal('e-commerce');
-  nomeloja = 'Mercado liso';
+  nomeloja = 'Mercado da Anny';
 }
