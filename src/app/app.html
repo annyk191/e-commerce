@@ -1,8 +1,12 @@
 <h1>{{ nomeloja | uppercase }}</h1>
  <nav>
    <a routerLink="/">Home</a> |
-   <a routerLink="/produto">produtos</a> |
+   <a routerLink="/produtos">produtos</a> |
    <a routerLink="/carrinho">carrinho</a> 
  </nav>
  <hr />
+ <button (click) ="login()">login</button>
+  <button (click) ="logout()">logout</button>
+  <p>status {{usuarioLogado() ? 'Logado' : 'deslogado'}}</p>
+  <hr>
  <router-outlet></router-outlet>
