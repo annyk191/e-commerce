@@ -5,6 +5,9 @@ import { computed } from '@angular/core';
 import { PrecoFormatadoPipe } from '../../../shared/pipes/preco-formatado-pipe';
 import { effect } from '@angular/core';
 import { UpperCasePipe} from '@angular/common';
+import { produtosService} from '../produtos.service';
+import { inject } from '@angular/core';
+import { error } from 'console';
 
 @Component({
   selector: 'app-lista-produtos',
@@ -14,13 +17,8 @@ import { UpperCasePipe} from '@angular/common';
 })
 export class ListaProdutos {
   //lista com dados - Array
-  produtos = signal([
-    {nome: 'teclado gamer', preco:299.99},
-    {nome: 'Mouse', preco:199.99},
-    {nome: 'monitor', preco:899.99},
-    {nome: 'desktop', preco:569.99},
-    {nome: 'headsert', preco:56.99},
-  ]);
+produtos =signal<{nome:string;preco:number}[]>([]);
+carregando =signal(true);
   //!função para exibir selecionados pelo usuario no console
   exibirProduto(nome: string){
     console.log('Produto selecionado:', nome);
@@ -53,6 +51,9 @@ substituirproduto(){
 }
 //metodo para monitorar alterações em tempo real usando effect()
 constructor(){
+
+  this.carregarProdutos();
+
   effect(() =>{
     console.log('lista de produtos alterados: ', this.produtos());
   });
@@ -82,7 +83,22 @@ totalCarrinho = computed(() =>{
   return this.carrinho().reduce((total, item) =>
   total + item.preco,0)});
 
- //valorTotal = computed(() =>
- // {return this.produtos().reduce((total, item) =>
- // total + item.preco,0)});
+carregarProdutos(){
+  this.carregando.set(true);
+  this.produtosService.buscarProdutos().subscribe({
+  next: (dados) =>{
+    const produtos = this.produtosService.TransformarProdutos(dados);
+    this.produtos.set(produtos);
+    this.carregando.set(false);
+  },
+  error: (erro) =>{
+    console.error('Erro ao carregar produtos', erro);
+    this.carregando.set(false);
+  }
+});
+
+}
+
+private produtosService = inject(produtosService);
+
 }
