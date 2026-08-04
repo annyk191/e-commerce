@@ -1,4 +1,4 @@
-<h2>produtos</h2>]
+<h2>produtos</h2>
 <!--estado 1: carregando-->
 @if (carregando()){
     <p><strong>carregando produtos, aguarde...</strong></p>
@@ -8,8 +8,8 @@
     <p><strong style="color: red;"> {{erro() }} </strong></p>
     <button (click)="carregarProdutos()">tente novamente</button>
 }
-@if (!carregando() && erro()) {
-@for (item of produtos(); track item.nome) {
+@if (!carregando() && !erro()) {
+@for (item of produtos(); track $index) {
 <app-produto
 [nome]="item.nome"
 [preco]="item.preco"
@@ -22,7 +22,7 @@
 
 <hr>
 <h2>Carrinho</h2>
-
+ 
 @for (item of carrinho(); track $index){
 <p>{{item.nome}} - {{item.preco | precoFormatado}}</p>
 } 
