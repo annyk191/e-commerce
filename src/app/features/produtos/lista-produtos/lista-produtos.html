@@ -1,28 +1,31 @@
-<h2>Produtos:</h2>
-@if (carregando()) {
-<p>Carregando produtos...</p>
+<h2>produtos</h2>]
+<!--estado 1: carregando-->
+@if (carregando()){
+    <p><strong>carregando produtos, aguarde...</strong></p>
 }
-@if (!carregando()) {
+<!--estado 2 : erro-->
+@if(erro()){
+    <p><strong style="color: red;"> {{erro() }} </strong></p>
+    <button (click)="carregarProdutos()">tente novamente</button>
+}
+@if (!carregando() && erro()) {
 @for (item of produtos(); track item.nome) {
 <app-produto
 [nome]="item.nome"
 [preco]="item.preco"
 (produtoSelecionado)="exibirProduto($event)"
-></app-produto>
+>
+</app-produto>
 <button (click)="adicionarAocarrinho(item)">Adicionar ao Carrinho</button>
 }
 }
+
 <hr>
-<p><button (click)="adicionarproduto()">Adicionar produto</button></p>
-<p><button (click)="substituirproduto()">substituir produto</button></p>
+<h2>Carrinho</h2>
+
+@for (item of carrinho(); track $index){
+<p>{{item.nome}} - {{item.preco | precoFormatado}}</p>
+} 
 <hr>
-<h2>total de produtos: {{totalprodutos()}}</h2>
-<h3>valor Total: {{valorTotal() | precoFormatado}}</h3>
-<hr>
-<h2>carrinho</h2>
-@for(item of carrinho(); track $index){
-    <p>{{item.nome}} - {{item.preco | precoFormatado}}</p>
-}
-<hr>
-<p><strong>quantidade de itens no carrinho:</strong>{{quantidadeCarrinho()}}</p>
-<p><strong>valor total do carrinho:</strong>{{totalCarrinho() |precoFormatado}}</p>
+<p><strong>Quanti de itens:</strong>{{ quantidadeCarrinho() }}</p>
+<p><strong>Valor total: </strong>{{totalCarrinho() |precoFormatado}}</p>
