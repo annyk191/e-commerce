@@ -1,5 +1,12 @@
 <div class="produto">
+
 <h3>{{nome | uppercase}}</h3>
 <P>{{preco | precoFormatado}}</P>
-<button (click) ="selecionarProduto()">selecionar {{nome}}</button>
+
+<button (click) ="selecionarProduto()">
+    selecionar {{nome}}
+</button>
+<button (click)="adicionarAoCarrinho()">
+    Adicionar ao carrinho
+</button>
 </div>
