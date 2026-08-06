@@ -1,12 +1,11 @@
-<h1>{{ nomeloja | uppercase }}</h1>
- <nav>
-   <a routerLink="/">Home</a> |
-   <a routerLink="/produtos">produtos</a> |
-   <a routerLink="/carrinho">carrinho</a> 
- </nav>
- <hr />
- <button (click) ="login()">login</button>
-  <button (click) ="logout()">logout</button>
-  <p>status {{usuarioLogado() ? 'Logado' : 'deslogado'}}</p>
-  <hr>
- <router-outlet></router-outlet>
+<app-header></app-header>
+<hr>
+    <mat-card-actions>
+<button mat-raised-button collor="primary"(click)="login()">Login</button>
+<button mat-raised-button collor="primary"(click)="logout()">Logout</button>
+    </mat-card-actions>
+    <mat-card-header>
+<p>    Status: {{usuarioLogado() ? 'Logado' : 'Deslogado'}}</p>
+    </mat-card-header>
+<hr>
+<router-outlet></router-outlet>
