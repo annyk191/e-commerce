@@ -14,8 +14,8 @@ import { Header } from './shared/layout/header/header';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('e-commerce-aluno');
-  nomeLoja = 'Mercado';
+  protected readonly title = signal('e-commerce');
+  nomeLoja = 'Mercado da Anny';
   usuarioLogado = usuarioLogado;
   login = login;
   logout = logout;
