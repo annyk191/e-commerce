@@ -12,24 +12,32 @@
         <small style="color: red;">NOME NÃO PODE CONTER NÚMEROS</small>
       }
 
+
      <p> <input type="email" formControlName="email" placeholder="Digite seu E-mail" /> </p>
      
-     @if(formulario.get('nome')?.touched && formulario.get('nome')?.errors?.['required']){
-        <small style="color: red;;">EMAIL É OBRIGATÓRIO</small>
+     @if(formulario.get('email')?.touched && formulario.get('email')?.errors?.['required']){
+        <small style="color: red;;">E-MAIL É OBRIGATÓRIO</small>
      }
+      @if(formulario.get('email')?.errors?.['email']){
+        <small style="color: red;">E-MAIL INVÁLIDO</small>
+      }
+
 
      <p> <input type="text" formControlName="endereco" placeholder="Digite seu Endereço" /> </p>
 
-     @if(formulario.get('nome')?.touched && formulario.get('nome')?.errors?.['required']){
+     @if(formulario.get('endereco')?.touched && formulario.get('endereco')?.errors?.['required']){
         <small style="color: red;;">ENDEREÇO É OBRIGATÓRIO</small>
      }
 
-    @if(formulario.get('nome')?.errors?.['minLength']){
+    @if(formulario.get('endereco')?.errors?.['minLength']){
         <small style="color: red;">ENDEREÇO DEVE TER NO MÍNIMO (5) CINCO LETRAS</small>
+    }
+    @if(formulario.get('endereco')?.errors?.['minLength']){
+        <small style="color: red;">ENDEREÇO INVÁLIDO</small>
     }
 
 
-    
+
 
     <button type="button" (click)="finalizar()"> Finalizar Compra </button>
      </form>
