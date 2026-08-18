@@ -4,6 +4,12 @@
 .acesso-negado p{
     line-height: 1.5;
 }
+.acesso-negado img{
+    display: block;
+    width: 250px;
+    height: auto;
+    margin: 20px auto;
+}
 button{
     margin-top: 16px;
     padding: 8px 16px;
