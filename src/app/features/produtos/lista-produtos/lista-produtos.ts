@@ -7,7 +7,7 @@ import { effect } from '@angular/core';
 import { UpperCasePipe} from '@angular/common';
 import { produtosService} from '../../../core/services/produtos.service';
 import { inject } from '@angular/core';
-import { CarrinhoService } from '../../../core/services/carrinho.service';
+import { CarrinhoFacade } from '../../../core/facades/carrinho.facade';
 
 @Component({
   selector: 'app-lista-produtos',
@@ -64,7 +64,7 @@ constructor(){
   });
   effect(() =>{
     if (typeof document !== 'undefined'){
-      document.title = `(${this.totalprodutos()}) - Loja da Anny`;
+      document.title = `(${this.totalprodutos()}) - Loja da Mily`;
     }
   });
 }
@@ -72,7 +72,7 @@ constructor(){
 produtoSelecionado = signal <string | null>(null);
 // metodo para criar um estado para carrinho con signal
 adicionarAocarrinho(produto:{nome: string; preco: number}){
-  this.carrinhoService.adicionar(produto);
+  this.carrinhoFacade.adicionarProdutoCarrinho(produto);
 }
 
 carregarProdutos(){
@@ -94,9 +94,9 @@ carregarProdutos(){
 }
 
 private produtosService = inject(produtosService);
-public carrinhoService = inject(CarrinhoService);
+public carrinhoFacade = inject(CarrinhoFacade);
 
-quantidadecarrinho = this.carrinhoService.quantidadeitens;
-totalcarrinho =this.carrinhoService.totalitens;
+quantidadecarrinho = this.carrinhoFacade.quantidadeCarrinho;
+totalcarrinho =this.carrinhoFacade.totalCarrinho;
 
 }
