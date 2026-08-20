@@ -12,7 +12,7 @@ import { PrecoFormatadoPipe } from '../../../shared/pipes/preco-formatado-pipe';
 })
 export class Checkout {
 
-  carrinhoService = inject(CarrinhoService);
+  carrinhofacade = inject(CarrinhoService);
 
   compraFinalizada = signal(false);
 
@@ -26,7 +26,7 @@ export class Checkout {
 
     this.compraFinalizada.set(false);
 
-    if(this.carrinhoService.carrinhoVazio()){
+    if(this.carrinhofacade.carrinhoVazio()){
       console.log('Não é possível finalizar a compra com o carrinho vazio');
       return;
     }
@@ -38,15 +38,15 @@ export class Checkout {
     }
 
     const dados = this.formulario.value;
-    const itens = this.carrinhoService.itens();
-    const total = this.carrinhoService.totalitens();
+    const itens = this.carrinhofacade.itensCarrinho();
+    const total = this.carrinhofacade.totalCarrinho();
 
     console.log('Compra finalizada com sucesso!');
      console.log('Dados do Formulario: ', dados);
      console.log('Itens no carrinho: ', itens);
      console.log('Total de compra: ', total);
 
-     this.carrinhoService.limpar();
+     this.carrinhofacade.limpar();
      this.formulario.reset();
      this.compraFinalizada.set(true);
   }
@@ -59,3 +59,5 @@ function nomeSemNumeros(controle:AbstractControl):ValidationErrors | null {
   }
   return null;
 }
+
+
