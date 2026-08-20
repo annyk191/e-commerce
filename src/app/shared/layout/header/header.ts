@@ -15,7 +15,7 @@ import { AuthService } from '../../../core/services/auth.servise';
 export class Header {
   nomeLoja = 'Mercado da Anny';
   private carrinhoService = inject(CarrinhoService);
-  quantidadeHeader =this.carrinhoService.quantidadeitens;
+  quantidadeHeader =this.carrinhoService.quantidadeCarrinho;
 
   private authService = inject(AuthService);
   usuarioLogado = this.authService.usuarioLogado;
