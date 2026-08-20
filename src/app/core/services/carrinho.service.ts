@@ -17,9 +17,9 @@ export class CarrinhoService {
     private carrinho = signal<Itemcarrinho[]>([]);
 
     //? seleções
-    itens = computed(() => this.carrinho());
-    quantidadeitens = computed(() => this.carrinho().length);
-    totalitens = computed(() =>
+    itensCarrinho = computed(() => this.carrinho());
+    quantidadeCarrinho = computed(() => this.carrinho().length);
+    totalCarrinho = computed(() =>
     this.carrinho().reduce((total, item) => total + item.preco,0));
     carrinhoVazio = computed(() => this.carrinho().length === 0);
 
