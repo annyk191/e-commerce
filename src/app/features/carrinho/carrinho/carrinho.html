@@ -3,7 +3,7 @@
     <h2>Carrinho</h2>
     @if(carrinhoFacade.carrinhoVazio()){
         <p>Seu Carrinho está vazio</p>
-        <button mat-raised-button color="primary"type="button" routerlink="/produtos">Ver Produtos</button>
+        <button mat-raised-button color="primary"type="button" routerLink="/produtos">Ver Produtos</button>
     }@else {
         <section class="lista-carrinho">
             @for(item of carrinhoFacade.itensCarrinho(); track $index){
