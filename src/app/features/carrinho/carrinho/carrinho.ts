@@ -12,7 +12,7 @@ import { PrecoFormatadoPipe } from '../../../shared/pipes/preco-formatado-pipe';
 
 @Component({
   selector: 'app-carrinho',
-  imports: [PrecoFormatadoPipe],
+  imports: [PrecoFormatadoPipe, RouterLink, MatButtonModule ],
   templateUrl: './carrinho.html',
   styleUrl: './carrinho.css',
 })
