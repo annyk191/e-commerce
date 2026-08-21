@@ -64,7 +64,7 @@ constructor(){
   });
   effect(() =>{
     if (typeof document !== 'undefined'){
-      document.title = `(${this.totalprodutos()}) - Loja da Mily`;
+      document.title = `(${this.totalprodutos()}) -Loja da Anny`;
     }
   });
 }
