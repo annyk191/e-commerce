@@ -9,11 +9,11 @@ export class CarrinhoFacade {
 
    private carrinhoService = inject(CarrinhoService);
 
-  itensCarrinho = this.carrinhoService.itensCarrinho;
+  itensCarrinho = this.carrinhoService.itens
 
-  quantidadeCarrinho = this.carrinhoService.quantidadeCarrinho;
+  quantidadeCarrinho = this.carrinhoService.quantidadeItens;
 
-  totalCarrinho = this.carrinhoService.totalCarrinho;
+  totalCarrinho = this.carrinhoService.totalItens;
 carrinhoVazio: any;
 
   adicionarProdutoCarrinho(produto: { nome: string; preco: number }) {

@@ -22,7 +22,7 @@ import { AuthService } from './core/services/auth.servise';
 export class App {
   protected readonly title = signal('e-commerce');
 
-  nomeLoja = 'Mercado do Sidney';
+  nomeLoja = 'Mercado da Anny';
 
   authService = inject(AuthService);
 

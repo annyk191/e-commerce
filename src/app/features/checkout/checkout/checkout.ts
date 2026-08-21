@@ -1,18 +1,23 @@
 import { Component,inject, signal } from '@angular/core';
 import{ReactiveFormsModule, FormGroup, FormControl} from '@angular/forms';
 import { Validators, AbstractControl, ValidationErrors } from '@angular/forms';
-import { CarrinhoService } from '../../../core/services/carrinho.service';
+import { CarrinhoFacade } from '../../../core/facades/carrinho.facade';
 import { PrecoFormatadoPipe } from '../../../shared/pipes/preco-formatado-pipe';
+import { MatButtonModule } from '@angular/material/button';
+import { RouterLink } from '@angular/router';
+import { pedidoFinalizado } from '../../../core/models/pedido-finalizado';
 
 @Component({
   selector: 'app-checkout',
-  imports: [ReactiveFormsModule, PrecoFormatadoPipe],
+  imports: [ReactiveFormsModule, PrecoFormatadoPipe, MatButtonModule, RouterLink],
   templateUrl: './checkout.html',
   styleUrl: './checkout.css',
 })
 export class Checkout {
 
-  carrinhofacade = inject(CarrinhoService);
+  pedidoFinalizado = signal<pedidoFinalizado | null >(null);
+
+  carrinhofacade = inject(CarrinhoFacade);
 
   compraFinalizada = signal(false);
 
@@ -21,12 +26,14 @@ export class Checkout {
     email:new FormControl('',[Validators.required, Validators.email]),
     endereco:new FormControl('',[Validators.required, Validators.minLength(5)]),
   });
+  carrinhoFacade: any;
 
   finalizar(){
 
     this.compraFinalizada.set(false);
+    this.pedidoFinalizado.set(null);
 
-    if(this.carrinhofacade.carrinhoVazio()){
+    if(this.carrinhoFacade.carrinhoVazio()){
       console.log('Não é possível finalizar a compra com o carrinho vazio');
       return;
     }
@@ -41,14 +48,23 @@ export class Checkout {
     const itens = this.carrinhofacade.itensCarrinho();
     const total = this.carrinhofacade.totalCarrinho();
 
-    console.log('Compra finalizada com sucesso!');
-     console.log('Dados do Formulario: ', dados);
-     console.log('Itens no carrinho: ', itens);
-     console.log('Total de compra: ', total);
+    const pedido = {
+      codigo:Date.now(),
+      cliente:dados.nome ??'',
+      email:dados.email ?? '',
+      quantidadeItens: itens.length,
+      total,
+      itens,
+    }
 
-     this.carrinhofacade.limpar();
+    console.log('Compra finalizada com sucesso!');
+    console.log('Dados do Formulario: ', dados);
+    console.log('dados do pedido: ', pedido);
+
+     this.carrinhoFacade.limparCarrinho();
      this.formulario.reset();
-     this.compraFinalizada.set(true);
+     //this.compraFinalizada.set(true);
+     this.pedidoFinalizado.set(pedido);
   }
 }
 function nomeSemNumeros(controle:AbstractControl):ValidationErrors | null {
