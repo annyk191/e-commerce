@@ -1,10 +1,10 @@
 import { inject } from "@angular/core";
 import { CanActivateFn, Router } from "@angular/router";
-import { AuthService } from "../services/auth.servise";
+import { AuthFacade } from "../facades/auth.facade";
 
 export const adminGuard: CanActivateFn = () => {
     const router = inject(Router);
-    const authService = inject(AuthService);
+    const authService = inject(AuthFacade);
 
     if(!authService.usuarioLogado()){
         return router.createUrlTree(['/login']);
