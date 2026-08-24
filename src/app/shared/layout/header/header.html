@@ -26,9 +26,10 @@
 
   @if (usuarioLogado()) {
 
-    <span>
-      {{ usuarioAtual()?.email }}
-    </span>
+    <span class="email-usuario">
+  {{ usuarioAtual()?.email }}
+</span>
+
 
     <button mat-button type="button" (click)="sair()">
       Sair
@@ -43,3 +44,4 @@
   }
 
 </mat-toolbar>
+
