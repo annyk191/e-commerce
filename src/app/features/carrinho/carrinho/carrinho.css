@@ -1,22 +1,53 @@
-.item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 50%;
-    margin: 10px;
+.pagina-carrinho {
+  max-width: 800px;
 }
-.acoes-carrinho button {
-    margin: 10px;
+
+.lista-carrinho {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
+
+.item-carrinho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.item-carrinho h3 {
+  margin: 0;
+}
+
+.item-carrinho p {
+  margin: 0;
+}
+
+.resumo-carrinho {
+  margin: 16px 0;
+}
+
 .acoes-carrinho {
-    text-align: center;
-    margin: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin: 10px;
 }
-.btn-confirma {
-    background-color: #329932;
-    color: #fff;
+
+.acoes-carrinho button {
+  margin: 10px;
 }
-.btn-cancelar{
-    background-color: #ff3232;
-    color: #fff;
+
+.btn-confirmar {
+  background-color: #329932 !important;
+  color: white !important;
+}
+
+.btn-cancelar {
+  background-color: #ff3232 !important;
+  color: white !important;
 }

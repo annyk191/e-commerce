@@ -26,7 +26,7 @@ export class App {
 
   authService = inject(AuthService);
 
-  usuarioLogado = this.authService.usuarioLogado;
+usuarioLogado = this.authService.estaLogado;
   login = this.authService.login.bind(this.authService);
   logout = this.authService.logout.bind(this.authService);
 }

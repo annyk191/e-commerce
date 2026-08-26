@@ -7,7 +7,7 @@ import { ItemCarrinho } from '../../../core/models/item-carrinho';
 
 @Component({
   selector: 'app-produto',
-  imports: [UpperCasePipe, PrecoFormatadoPipe, MatButtonModule, MatCardModule],
+  imports: [UpperCasePipe, PrecoFormatadoPipe, MatButtonModule, MatCardModule, ],
   templateUrl: './produto.html',
   styleUrl: './produto.css',
 })// adicionando a classe produto com as propriedades produto, 

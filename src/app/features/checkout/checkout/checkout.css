@@ -1,71 +1,94 @@
 .pagina-checkout {
-    max-width: 700px;
+  max-width: 700px;
 }
 
-.pedido-Finalizado {
-    border: 1px solid #ddd;
-    border-radius:10px ;
-    padding:12px;
-    margin: 16px 0;
+.pedido-finalizado {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 12px;
+  margin: 16px 0 0 0;
 }
 
 .carrinho-vazio {
-    border-color: #f3b7b7;
-    background-color: #fff5f5;
-    text-align: center;
-
+  border-color: #f3b7b7;
+  background-color: #fff5f5;
+  text-align: center;
 }
 
-.carrinho-vazio h3{
-    color: red;
-    font-weight: bold;
-
+.carrinho-vazio h3 {
+  color: red;
+  font-weight: bold;
 }
 
 .carrinho-vazio p {
-    color: red;
+  color: red;
 }
 
 .carrinho-vazio button {
-    color: #fff;
-    background-color: red;
+  color: #fff;
+  background-color: red;
 }
 
 .compra-resumo {
-    border-color: #b7e4c7;
-    background-color: #f1fff5;
-    text-align: center;
-
-
-}
-.compra-resumo p{
-    font-weight: bold;
+  border-color: #b7e4c7;
+  background-color: #f1fff5;
+  text-align: center;
 }
 
-.compra-resumo button{
-    background-color: #b7e4c7;
-    color: green;
+.compra-resumo p {
+  font-weight: bold;
 }
 
-form{
-    max-width: 500px;
+.compra-resumo button {
+  background-color: #b7e4c7;
+  color: green;
 }
 
-input{
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
+form {
+  max-width: 500px;
+}
+.carrinho-vazio p {
+  color: red;
 }
 
-small{
-    display: block;
-    color: red;
-    margin-bottom: 8px;
-
+.carrinho-vazio button {
+  color: #fff;
+  background-color: red;
 }
 
-button{
-    margin-right: 8px;
-    margin-top: 8px;
-    text-align: center;
+.compra-resumo {
+  border-color: #b7e4c7;
+  background-color: #f1fff5;
+  text-align: center;
+}
+
+.compra-resumo p {
+  font-weight: bold;
+}
+
+.compra-resumo button {
+  background-color: #b7e4c7;
+  color: green;
+}
+
+form {
+  max-width: 500px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+small {
+  display: block;
+  color: red;
+  margin-bottom: 8px;
+}
+
+button {
+  margin-right: 8px;
+  margin-top: 8px;
+  text-align: center;
 }

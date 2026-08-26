@@ -1,5 +1,7 @@
 import { Injectable, inject } from '@angular/core';
+
 import { CarrinhoService } from '../services/carrinho.service';
+
 import { ItemCarrinho } from '../models/item-carrinho';
 
 @Injectable({
@@ -7,16 +9,17 @@ import { ItemCarrinho } from '../models/item-carrinho';
 })
 export class CarrinhoFacade {
 
-   private carrinhoService = inject(CarrinhoService);
+  private carrinhoService = inject(CarrinhoService);
 
-  itensCarrinho = this.carrinhoService.itens
+  itensCarrinho = this.carrinhoService.itens;
 
-  quantidadeCarrinho = this.carrinhoService.quantidadeItens;
+  quantidadeCarrinho = this.carrinhoService.quantidade;
 
-  totalCarrinho = this.carrinhoService.totalItens;
-carrinhoVazio = this.carrinhoService.carrinhoVazio;
+  totalCarrinho = this.carrinhoService.total;
 
-  adicionarProdutoCarrinho(produto: { nome: string; preco: number }) {
+  carrinhoVazio = this.carrinhoService.carrinhoVazio;
+
+  adicionarProdutoCarrinho(produto: ItemCarrinho) {
     this.carrinhoService.adicionar(produto);
   }
 
@@ -24,7 +27,7 @@ carrinhoVazio = this.carrinhoService.carrinhoVazio;
     this.carrinhoService.limpar();
   }
 
-  removerItem(rmvItem: number){
-    this.carrinhoService.removerItem(rmvItem);
+  removerItem(indice: number) {
+    this.carrinhoService.removerPorIndice(indice);
   }
 }

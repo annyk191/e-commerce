@@ -10,8 +10,11 @@ export class AuthFacade {
   private authService = inject(AuthService);
 
   usuarioAtual = this.authService.usuarioAtual;
-  usuarioLogado = this.authService.usuarioLogado;
+
+  usuarioLogado = this.authService.estaLogado;
+
   admin = this.authService.admin;
+
   token = this.authService.token;
 
   realizarLogin(email: string, senha: string): boolean {
