@@ -15,7 +15,6 @@
       </button>
     </section>
   }
-
   @if (carrinhoFacade.carrinhoVazio() && !pedidoFinalizado()) {
     <section class="carrinho-vazio">
       <h3>Seu carrinho está vazio!</h3>
@@ -34,15 +33,11 @@
       </button>
     </section>
   }
-
   <form [formGroup]="formulario">
-    <p>
-      <input type="text" formControlName="nome" placeholder="Digite seu nome completo">
-    </p>
-
-    @if (formulario.get('nome')?.touched && formulario.get('nome')?.invalid) {
+    <p> <input type="text" formControlName="nome" placeholder="Digite seu nome completo"> </p>
+ @if (formulario.get('nome')?.touched && formulario.get('nome')?.invalid) {
       @if (formulario.get('nome')?.errors?.['required']) {
-        <small style="color:red">NOME É OBRIGATÓRIO</small>
+          <small style="color:red">NOME É OBRIGATÓRIO</small>
       }
     }
 
@@ -53,7 +48,6 @@
     @if (formulario.get('nome')?.errors?.['numeroInvalido']) {
       <small style="color:red">NOME NÃO PODE CONTER NÚMEROS</small>
     }
-
     <p>
       <input type="email" formControlName="email" placeholder="Digite seu e-mail">
     </p>
@@ -63,30 +57,20 @@
         <small style="color:red">E-MAIL É OBRIGATÓRIO</small>
       }
     }
-
     @if (formulario.get('email')?.errors?.['email']) {
       <small style="color:red">E-MAIL INVÁLIDO</small>
     }
-
     <p>
       <input type="text" formControlName="endereco" placeholder="Digite seu endereço">
     </p>
-
     @if (formulario.get('endereco')?.touched && formulario.get('endereco')?.invalid) {
       @if (formulario.get('endereco')?.errors?.['required']) {
         <small style="color:red">ENDEREÇO É OBRIGATÓRIO</small>
       }
     }
-
-    @if (formulario.get('endereco')?.errors?.['minlength']) {
-      <small style="color:red">ENDEREÇO INVÁLIDO</small>
-    }
-
+    @if (formulario.get('endereco')?.errors?.['minlength']) {<small style="color:red">ENDEREÇO INVÁLIDO</small>}
     <p>
-      <button mat-raised-button color="primary" type="button"
-        (click)="finalizar()" [disabled]="formulario.invalid">
-        Finalizar compra
-      </button>
+      <button mat-raised-button color="primary" type="button" (click)="finalizar()" [disabled]="formulario.invalid"> Finalizar compra </button>
     </p>
   </form>
 </section>
