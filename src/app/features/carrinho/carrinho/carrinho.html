@@ -4,16 +4,10 @@
   @if(carrinhoFacade.carrinhoVazio()){
     <p>Seu Carrinho está vazio</p>
 
-    <button
-      mat-raised-button
-      class="btn-fucsia"
-      type="button"
-      routerLink="/produtos">
-      Ver Produtos
-    </button>
+    <button  mat-raised-button class="btn-fucsia" type="button"  routerLink="/produtos">  Ver Produtos</button>
   } @else {
     <hr>
-
+    
     <section class="resumo-carrinho">
       <h3>Resumo da Compra</h3>
       <p><strong>Itens do Carrinho: </strong>{{carrinhoFacade.quantidadeCarrinho()}}</p>
@@ -21,37 +15,10 @@
     </section>
 
     <section class="acoes-carrinho">
-      <button
-        mat-raised-button
-        class="btn-fucsia"
-        type="button"
-        (click)="limparCarrinho()">
-        Limpar Carrinho
-      </button>
-
-      <button
-        mat-raised-button
-        class="btn-fucsia"
-        type="button"
-        routerLink="/produtos">
-        Ver Produtos
-      </button>
-
-      <button
-        mat-raised-button
-        class="btn-confirmar"
-        type="button"
-        routerLink="/checkout">
-        Finalizar Compra
-      </button>
-
-      <button
-        mat-raised-button
-        class="btn-cancelar"
-        type="button"
-        (click)="cancelarCompra()">
-        Cancelar Compra
-      </button>
+      <button mat-raised-button class="btn-fucsia" type="button"  (click)="limparCarrinho()">Limpar Carrinho </button>
+      <button  mat-raised-button class="btn-fucsia"  type="button" routerLink="/produtos"> Ver Produtos</button>
+      <button mat-raised-button class="btn-confirmar" type="button" routerLink="/checkout"> Finalizar Compra </button>
+      <button mat-raised-button class="btn-cancelar" type="button" (click)="cancelarCompra()">Cancelar Compra  </button>
     </section>
   }
 </section>
