@@ -9,7 +9,7 @@ import { ListaProdutos } from "../lista-produtos/lista-produtos";
   templateUrl:'./favoritos.html',
   styleUrl:'./favoritos.css'
 })
-export class FavoritosComponent{
+export class Favoritos{
   favoritos = signal<string[]>([]);
   novoProduto ="";
    
