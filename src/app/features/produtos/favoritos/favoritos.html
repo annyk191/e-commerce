@@ -1,31 +1,23 @@
-<h2>Produtos Favoritos</h2>
-
-<input
-  type="text"
-  placeholder="Digite o nome do produto"
-  [(ngModel)]="novoProduto"
-/>
-
-<button
-  type="button"
-  (click)="adicionarFavorito()"
->
-  Adicionar
-</button>
-
-@if (favoritos().length === 0) {
-  <p>Nenhum produto favorito adicionado</p>
-} @else {
-  @for (item of favoritos(); track item) {
-    <div>
-      <span>{{ item }}</span>
-
-      <button
-        type="button"
-        (click)="removerFavorito(item)"
-      >
-        Remover
-      </button>
-    </div>
+<section class="pagina-favoritos">
+  <h2>Produtos Favoritos</h2>
+  <div class="Cadastro-favorito">
+    <input type="text" []="novoProduto"
+      placeholder="Digite o nome do produto"
+    />
+    <button type="button" (click)="adicionarFavorito()">Adicionar</button>
+  </div>
+  @if (favoritos().length ===0) {
+    <P>Nenhum Produto Favoritos Adicionado</P>
   }
-}
+  @else {
+    <h3>
+      @for (item of favoritos(); track $index) {
+        <h4>
+          <span>{{item}}</span>
+           <button type="button" (click)="removerFavorito(item)"></button>
+        </h4>
+       
+      }
+    </h3>
+  }
+</section>
