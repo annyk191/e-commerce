@@ -1,5 +1,6 @@
 mat-toolbar {
   display: flex;
+   background-color: #f89bba;
   flex-wrap: wrap;
 }
 
@@ -13,5 +14,5 @@ button {
 
 .email-usuario {
   font-size: 15px;
-  color: rgb(224, 76, 126);
+  color: rgb(0, 0, 0);
 }
