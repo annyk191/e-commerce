@@ -1,23 +1,26 @@
 <section class="pagina-favoritos">
-  <h2>Produtos Favoritos</h2>
-  <div class="Cadastro-favorito">
-    <input type="text" []="novoProduto"
-      placeholder="Digite o nome do produto"
-    />
-    <button type="button" (click)="adicionarFavorito()">Adicionar</button>
-  </div>
-  @if (favoritos().length ===0) {
-    <P>Nenhum Produto Favoritos Adicionado</P>
-  }
-  @else {
-    <h3>
-      @for (item of favoritos(); track $index) {
-        <h4>
-          <span>{{item}}</span>
-           <button type="button" (click)="removerFavorito(item)"></button>
-        </h4>
-       
+  <header class="cabecalho-favoritos">
+    <h2>Meus Favoritos</h2>
+    <p>Adicione produtos à sua lista de favoritos.</p>
+  </header>
+
+  <!-- <section class="form-favoritos">
+    <input type="text" [(ngModel)]="novoProduto" placeholder="Nome do produto" (keyup.enter)="adicionarProduto()"/> -->
+  <!-- <button type="button" (click)="adicionarProduto()">Adicionar</button>
+  </section> -->
+
+  <hr />
+
+ @if (favoritosService.listaFavoritos().length === 0) {
+    <p class="texto-neutro">Nenhum produto favorito adicionado</p>
+  } @else {
+    <ul class="lista-favoritos">
+     @for (item of favoritosService.listaFavoritos(); track item) {
+        <li class="item-favorito">
+          <span>{{ item }}</span>
+          <button mat-button type="button" (click)="removerFavorito(item)">Remover</button>
+        </li>
       }
-    </h3>
+    </ul>
   }
 </section>
