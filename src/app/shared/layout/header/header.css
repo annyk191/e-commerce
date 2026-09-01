@@ -16,3 +16,10 @@ button {
   font-size: 15px;
   color: rgb(0, 0, 0);
 }
+a[routerLink="/favoritos"] {
+  font-size: 14px;
+  color: #000;
+  text-decoration: none;
+  margin-left: 8px;
+  margin-right: 8px;
+}
