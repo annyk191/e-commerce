@@ -1,21 +1,21 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Favoritos } from './favoritos';
+import { Component, inject } from '@angular/core';
 
-describe('Favoritos', () => {
-  let component: Favoritos;
-  let fixture: ComponentFixture<Favoritos>;
+import { FavoritosService } from '../../../core/services/favoritos.service';
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [Favoritos],
-    }).compileComponents();
+@Component({
+  selector: 'app-favoritos',
+  standalone: true,
+  templateUrl: './favoritos.html',
+  styleUrl: './favoritos.css',
+})
+export class Favoritos {
 
-    fixture = TestBed.createComponent(Favoritos);
-    component = fixture.componentInstance;
-    await fixture.whenStable();
-  });
+  private favoritosService = inject(FavoritosService);
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  favoritos = this.favoritosService.favoritos;
+
+  removerFavorito(produtoId: string): void {
+    this.favoritosService.remover(produtoId);
+  }
+
+}
