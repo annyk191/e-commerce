@@ -1,30 +1,27 @@
-import { Component,signal} from "@angular/core";
-import { FormsModule } from "@angular/forms";
-import { ListaProdutos } from "../lista-produtos/lista-produtos";
- 
+import { Component, signal,inject } from '@angular/core'; 
+import { FormsModule } from '@angular/forms';
+import { FavoritosService } from '../../../core/services/favoritos.service';
+
 @Component({
-  selector:'app-favoritos',
-  standalone: true,
-  imports:[FormsModule],
-  templateUrl:'./favoritos.html',
-  styleUrl:'./favoritos.css'
-})
-export class Favoritos{
-  favoritos = signal<string[]>([]);
-  novoProduto ="";
-   
-  adicionarFavorito(): void {
-    const produto = this.novoProduto.trim();
+  selector: 'app-favoritos',
+  standalone: true, 
+  imports: [FormsModule],
+  templateUrl: './favoritos.html',
+  styleUrl: './favoritos.css' })
 
-       if (produto) {
-      this.favoritos.update(lista => [...lista, produto]);
-      this.novoProduto = '';
-    }
-  }
+  export class FavoritosComponent { 
+    favoritosService = inject(FavoritosService);
+    favoritos = signal<string[]>([]); novoProduto = ''; 
+    adicionarFavorito(): void {
+  const produto = this.novoProduto.trim();
 
-  removerFavorito(item: string): void {
-    this.favoritos.update(lista =>
-      lista.filter(produto => produto !== item)
-    );
+  if (produto) {
+    this.favoritosService.adicionar(produto);
+    this.novoProduto = '';
   }
 }
+removerFavorito(item: string): void {
+  this.favoritosService.remover(item);
+}
+  }
+
